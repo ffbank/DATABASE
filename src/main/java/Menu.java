@@ -1,15 +1,11 @@
-import javax.sound.midi.Soundbank;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.sql.*;
 
 public class Menu {
     public static void main(String[] args) throws IOException, SQLException {
@@ -33,7 +29,6 @@ public class Menu {
     }
     public static List<FootageAndReporter> Reader(Scanner scan, int counter) throws IOException {
         List<FootageAndReporter> ListOfFootagesAndReporters = new ArrayList<FootageAndReporter>();
-        SimpleDateFormat dateParser = new SimpleDateFormat("yyyyMMdd");
         System.out.println("please type in the file path for the file you wish to read");
         String filename = scan.nextLine();
         String line;
