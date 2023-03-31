@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="First make">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Footage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Footage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FootageAndReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FootageAndReporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Reader.java" beforeDir="false" />
-    </list>
+    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="Second iteration" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +53,7 @@
       <updated>1680000428517</updated>
       <workItem from="1680000430319" duration="3336000" />
       <workItem from="1680176504754" duration="834000" />
-      <workItem from="1680248395242" duration="9831000" />
+      <workItem from="1680248395242" duration="9969000" />
     </task>
     <task id="LOCAL-00001" summary="mcie">
       <created>1680001860475</created>
@@ -82,7 +76,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680252923243</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="First iteration">
+      <created>1680259088170</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680259088170</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Second iteration">
+      <created>1680259175919</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680259175919</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Second iteration">
+      <created>1680259184414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680259184414</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +117,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mcie" />
     <MESSAGE value="First make" />
-    <option name="LAST_COMMIT_MESSAGE" value="First make" />
+    <MESSAGE value="First iteration" />
+    <MESSAGE value="Second iteration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second iteration" />
   </component>
 </project>
