@@ -29,6 +29,7 @@ public class Menu {
     }
     public static List<FootageAndReporter> Reader(Scanner scan, int counter) throws IOException {
         List<FootageAndReporter> ListOfFootagesAndReporters = new ArrayList<FootageAndReporter>();
+        SimpleDateFormat dateParser = new SimpleDateFormat("yyyyMMdd");
         System.out.println("please type in the file path for the file you wish to read");
         String filename = scan.nextLine();
         String line;
