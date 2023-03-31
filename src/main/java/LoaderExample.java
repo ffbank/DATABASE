@@ -5,7 +5,7 @@ import java.util.List;
 public class LoaderExample {
 
 	public static void main(String[] args) {
-		FootagesAndReportersLoader loader = new FootagesAndReportersLoader();
+		/*FootagesAndReportersLoader loader = new FootagesAndReportersLoader();
 		try {
 			System.out.println("loading from "+args[0]);
 			List<FootageAndReporter> footagesAndReporters = loader.loadFootagesAndReporters(args[0]);
@@ -15,7 +15,7 @@ public class LoaderExample {
 			}
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 }
 
