@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="Second iteration">
+    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="Fixed some problems">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
     </list>
@@ -22,6 +22,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/Menu.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,7 +66,7 @@
       <workItem from="1680176504754" duration="834000" />
       <workItem from="1680248395242" duration="9969000" />
       <workItem from="1680259456289" duration="122000" />
-      <workItem from="1680260015713" duration="1023000" />
+      <workItem from="1680260015713" duration="1930000" />
     </task>
     <task id="LOCAL-00001" summary="mcie">
       <created>1680001860475</created>
@@ -114,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680259570794</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed some problems">
+      <created>1680261106599</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680261106599</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +146,7 @@
     <MESSAGE value="First make" />
     <MESSAGE value="First iteration" />
     <MESSAGE value="Second iteration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second iteration" />
+    <MESSAGE value="Fixed some problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some problems" />
   </component>
 </project>

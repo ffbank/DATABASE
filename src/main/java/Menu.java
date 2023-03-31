@@ -57,26 +57,17 @@ public class Menu {
         return ListOfFootagesAndReporters;
     }
     public static void sender(Connection con, List<Footage> foot, List<Reporter> rep) throws SQLException {
-        for (int i = 0; i < foot.size(); i++){
-            String sql = "INSERT INTO Footages (title, shot_date, duration_seconds, reporter_journalist_cpr_number) VALUES (?, ?, ?, ?)";
-            PreparedStatement statement = con.prepareStatement(sql);
-
-            statement.setString(1, foot.get(i).getTitle());
-            statement.setDate(2, foot.get(i).getDate());
-            statement.setString(3, Integer.toString(foot.get(i).getDuration()));
-            statement.setString(4, Integer.toString(rep.get(i).getCPR()));
-
-            int rows = statement.executeUpdate();
-            System.out.println(rows + " Rows inserted for footages");
+        List<String> notexists = new ArrayList<String>();
+        for (int i = 0; i < rep.size(); i++){
+            notexists.add(rep.get(i).getFirstName());
         }
-        List<String> exists = new ArrayList<String>();
         for(int i = 0; i < rep.size(); i++){
             String CheckifExists = "SELECT cpr_number FROM Journalists WHERE cpr_number = ?";
             PreparedStatement ExistCheck = con.prepareStatement(CheckifExists);
             ExistCheck.setString(1, Integer.toString(rep.get(i).getCPR()));
             ResultSet r = ExistCheck.executeQuery();
             if(r.next()){
-                exists.add(rep.get(i).getFirstName());
+                notexists.remove(i);
             }else{
                 String query = "INSERT INTO Journalists (cpr_number, first_name, last_name, street_name, civic_number, city, zip_code, country, phone_number, email_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = con.prepareStatement(query);
@@ -94,8 +85,21 @@ public class Menu {
                 System.out.println(rows + " Rows inserted for reporters");
             }
         }
-        for (int i = 0; i < exists.size(); i++){
-            System.out.println(exists.get(i) + " Already exists in the database.");
+        for (int i = 0; i < foot.size(); i++){
+            String sql = "INSERT INTO Footages (title, shot_date, duration_seconds, reporter_journalist_cpr_number) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+
+            statement.setString(1, foot.get(i).getTitle());
+            statement.setDate(2, foot.get(i).getDate());
+            statement.setString(3, Integer.toString(foot.get(i).getDuration()));
+            statement.setString(4, Integer.toString(rep.get(i).getCPR()));
+
+            int rows = statement.executeUpdate();
+            System.out.println(rows + " Rows inserted for footages");
+        }
+
+        for (int i = 0; i < notexists.size(); i++){
+            System.out.println(notexists.get(i) + " Did not exist in the database and were automatically added");
         }
     }
     public static List<Footage> splitter(List<FootageAndReporter> list){
