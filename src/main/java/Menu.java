@@ -57,9 +57,7 @@ public class Menu {
         return ListOfFootagesAndReporters;
     }
     public static void sender(Connection con, List<Footage> foot, List<Reporter> rep) throws SQLException {
-        int counter = 0;
-        String[] added = new String[10];
-        String notexists = null;
+        String notexists = "The following names did not exist in the database and were automatically added: ";
         for(int i = 0; i < rep.size(); i++){
             String CheckifExists = "SELECT cpr_number FROM Journalists WHERE cpr_number = ?";
             PreparedStatement ExistCheck = con.prepareStatement(CheckifExists);
@@ -68,20 +66,7 @@ public class Menu {
             if(r.next()){
                 //
             }else{
-                if(counter == 0){
-                    notexists = rep.get(i).getFirstName() + ", ";
-                    added[counter] = rep.get(i).getFirstName();
-                }
-                boolean checkifadded = false;
-                for(int j = 0; j < added.length; j++){
-                    if(added[j].equals(rep.get(i).getFirstName())) {
-                        checkifadded = true;
-                    }
-                }
-                if(!checkifadded){
-                    notexists += rep.get(i).getFirstName() + ", ";
-                    added[counter] = rep.get(i).getFirstName();
-                }
+                notexists += rep.get(i).getFirstName();
                 String query = "INSERT INTO Journalists (cpr_number, first_name, last_name, street_name, civic_number, city, zip_code, country, phone_number, email_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = con.prepareStatement(query);
                 stmt.setString(1, Integer.toString(rep.get(i).getCPR()));
@@ -96,7 +81,6 @@ public class Menu {
                 stmt.setString(10, "Undefined");
                 int rows = stmt.executeUpdate();
                 System.out.println(rows + " Rows inserted for reporters");
-                counter++;
             }
         }
         for (int i = 0; i < foot.size(); i++){
@@ -112,7 +96,7 @@ public class Menu {
             System.out.println(rows + " Rows inserted for footages");
         }
 
-        System.out.println(notexists + " did not exist in the database,  and were automatically added.");
+        System.out.println(notexists);
     }
     public static List<Footage> splitter(List<FootageAndReporter> list){
         List<Footage> split = new ArrayList<Footage>();
