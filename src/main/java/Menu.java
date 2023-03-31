@@ -3,17 +3,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.sql.*;
+
 public class Menu {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         int counter = 0;
         Scanner scan = new Scanner(System.in);
         System.out.println("Please type in the ip and port of the database you wish to connect to");
@@ -24,9 +23,13 @@ public class Menu {
         String password = scan.nextLine();
         Connection con = Connector.connector(ip, username, password);
         System.out.println("Reading data, please wait");
-        Reader(scan, counter);
+        List<FootageAndReporter> far = Reader(scan, counter);
         System.out.println(counter +" Lines have been read");
-
+        System.out.println("Splitting list");
+        List<Footage> foot = splitter(far);
+        List<Reporter> rep = splitter2(far);
+        System.out.println("Sending output to sql server");
+        sender(con, foot, rep);
     }
     public static List<FootageAndReporter> Reader(Scanner scan, int counter) throws IOException {
         List<FootageAndReporter> ListOfFootagesAndReporters = new ArrayList<FootageAndReporter>();
@@ -39,13 +42,7 @@ public class Menu {
         while ((line = br.readLine()) != null){
             fields = line.split(";");
             String title = fields[0];
-            Date date = null;
-            try {
-                date = dateParser.parse(fields[1]);
-            } catch (ParseException e) {
-                throw new NumberFormatException(
-                        "Invalid value (" + fields[0] + ") ");
-            }
+            Date date = java.sql.Date.valueOf(fields[1]);
             Integer duration = Integer.parseInt(fields[2]);
             Integer cpr = Integer.parseInt(fields[3]);
             String firstName = fields[4];
@@ -59,5 +56,62 @@ public class Menu {
             counter++;
         }
         return ListOfFootagesAndReporters;
+    }
+    public static void sender(Connection con, List<Footage> foot, List<Reporter> rep) throws SQLException {
+        for (int i = 0; i < foot.size(); i++){
+            String sql = "INSERT INTO Footages (title, shot_date, duration_seconds, reporter_journalist_cpr_number) VALUES (?, ?, ?, ?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+
+            statement.setString(1, foot.get(i).getTitle());
+            statement.setDate(2, foot.get(i).getDate());
+            statement.setString(3, Integer.toString(foot.get(i).getDuration()));
+            statement.setString(4, Integer.toString(rep.get(i).getCPR()));
+
+            int rows = statement.executeUpdate();
+            System.out.println(rows + " Rows inserted for footages");
+        }
+        List<String> exists = new ArrayList<String>();
+        for(int i = 0; i < rep.size(); i++){
+            String CheckifExists = "SELECT cpr_number FROM Journalists WHERE cpr_number = ?";
+            PreparedStatement ExistCheck = con.prepareStatement(CheckifExists);
+            ExistCheck.setString(1, Integer.toString(rep.get(i).getCPR()));
+            ResultSet r = ExistCheck.executeQuery();
+            if(r.next()){
+                exists.add(rep.get(i).getFirstName());
+            }else{
+                String query = "INSERT INTO Journalists (cpr_number, first_name, last_name, street_name, civic_number, city, zip_code, country, phone_number, email_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement stmt = con.prepareStatement(query);
+                stmt.setString(1, Integer.toString(rep.get(i).getCPR()));
+                stmt.setString(2, rep.get(i).getFirstName());
+                stmt.setString(3, rep.get(i).getLastName());
+                stmt.setString(4, rep.get(i).getStreetName());
+                stmt.setInt(5, rep.get(i).getCivicNumber());
+                stmt.setString(6, rep.get(i).getCountry());
+                stmt.setString(7, Integer.toString(rep.get(i).getZIPCode()));
+                stmt.setString(8, "Denmark");
+                stmt.setString(9, "Undefined");
+                stmt.setString(10, "Undefined");
+                int rows = stmt.executeUpdate();
+                System.out.println(rows + " Rows inserted for reporters");
+            }
+        }
+        for (int i = 0; i < exists.size(); i++){
+            System.out.println(exists.get(i) + " Already exists in the database.");
+        }
+    }
+    public static List<Footage> splitter(List<FootageAndReporter> list){
+        List<Footage> split = new ArrayList<Footage>();
+        for (int i = 0; i < list.size(); i++){
+            split.add(list.get(i).getFootage());
+        }
+        return split;
+    }
+
+    public static List<Reporter> splitter2(List<FootageAndReporter> list){
+        List<Reporter> split = new ArrayList<Reporter>();
+        for (int i = 0; i < list.size(); i++){
+            split.add(list.get(i).getReporter());
+        }
+        return split;
     }
 }

@@ -1,5 +1,5 @@
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 public class Footage {
     private final String title;
     private final Date date;

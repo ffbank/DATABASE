@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="mcie">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Connector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Reader.java" afterDir="false" />
+    <list default="true" id="529ee440-cdec-4792-b72a-2dad215290b1" name="Changes" comment="First make">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ExportTingen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ExportTingen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Footage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Footage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FootageAndReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FootageAndReporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Reader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +59,7 @@
       <updated>1680000428517</updated>
       <workItem from="1680000430319" duration="3336000" />
       <workItem from="1680176504754" duration="834000" />
-      <workItem from="1680248395242" duration="4248000" />
+      <workItem from="1680248395242" duration="9831000" />
     </task>
     <task id="LOCAL-00001" summary="mcie">
       <created>1680001860475</created>
@@ -76,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680003552425</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="First make">
+      <created>1680252923243</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680252923243</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mcie" />
-    <option name="LAST_COMMIT_MESSAGE" value="mcie" />
+    <MESSAGE value="First make" />
+    <option name="LAST_COMMIT_MESSAGE" value="First make" />
   </component>
 </project>
