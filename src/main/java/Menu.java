@@ -2,13 +2,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Menu {
-    public static void main(String[] args) throws IOException, SQLException {
+    public static void main(String[] args) throws IOException, SQLException, ParseException {
         int counter = 0;
         Scanner scan = new Scanner(System.in);
         System.out.println("Please type in the ip and port of the database you wish to connect to");
@@ -27,7 +29,7 @@ public class Menu {
         System.out.println("Sending output to sql server");
         sender(con, foot, rep);
     }
-    public static List<FootageAndReporter> Reader(Scanner scan, int counter) throws IOException {
+    public static List<FootageAndReporter> Reader(Scanner scan, int counter) throws IOException, ParseException {
         List<FootageAndReporter> ListOfFootagesAndReporters = new ArrayList<FootageAndReporter>();
         SimpleDateFormat dateParser = new SimpleDateFormat("yyyyMMdd");
         System.out.println("please type in the file path for the file you wish to read");
@@ -38,7 +40,8 @@ public class Menu {
         while ((line = br.readLine()) != null){
             fields = line.split(";");
             String title = fields[0];
-            Date date = java.sql.Date.valueOf(fields[1]);
+            java.util.Date parseddate = dateParser.parse(fields[1]);
+            java.sql.Date date = new java.sql.Date(parseddate.getTime());
             Integer duration = Integer.parseInt(fields[2]);
             Integer cpr = Integer.parseInt(fields[3]);
             String firstName = fields[4];
