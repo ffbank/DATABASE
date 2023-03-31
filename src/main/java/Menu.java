@@ -13,7 +13,7 @@ public class Menu {
     public static void main(String[] args) throws IOException, SQLException, ParseException {
         int counter = 0;
         Scanner scan = new Scanner(System.in);
-        System.out.println("Please type in the ip and port of the database you wish to connect to");
+        System.out.println("Please type in the ip and port of the database you wish to connect to int the format of IP:PORT");
         String ip = scan.nextLine();
         System.out.println("Please type in your database username: ");
         String username = scan.nextLine();
@@ -70,6 +70,7 @@ public class Menu {
             }else{
                 if(counter == 0){
                     notexists = rep.get(i).getFirstName() + ", ";
+                    added[counter] = rep.get(i).getFirstName();
                 }
                 boolean checkifadded = false;
                 for(int j = 0; j < added.length; j++){
@@ -79,6 +80,7 @@ public class Menu {
                 }
                 if(!checkifadded){
                     notexists += rep.get(i).getFirstName() + ", ";
+                    added[counter] = rep.get(i).getFirstName();
                 }
                 String query = "INSERT INTO Journalists (cpr_number, first_name, last_name, street_name, civic_number, city, zip_code, country, phone_number, email_address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = con.prepareStatement(query);
